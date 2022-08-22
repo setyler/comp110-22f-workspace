@@ -2,9 +2,6 @@
 
 __author__ = "730496915"
 
-from winreg import HKEY_LOCAL_MACHINE
-
-
 five_letter_word: str = input("Enter a 5-character word. ")
 if len(five_letter_word) != 5:
     print("Error: Word must contain 5 characters")
