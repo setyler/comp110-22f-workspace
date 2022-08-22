@@ -10,29 +10,29 @@ single_character: str = input("Enter a single character. ")
 if len(single_character) != 1:
     print("Error: Character must be a single character.")
     exit()
-print("Searching for " + single_character + " in " + five_letter_word)
+print("Searching for " + str(single_character) + " in " + str(five_letter_word))
 
 matching_characters: str = 0
 
 if five_letter_word[0] == single_character:
-    print(single_character + " found at index 0")
+    print(str(single_character) + " found at index 0")
     matching_characters = matching_characters + 1
 if five_letter_word[1] == single_character:
-    print(single_character + " found at index 1")
+    print(str(single_character) + " found at index 1")
     matching_characters = matching_characters + 1
 if five_letter_word[2] == single_character:
-    print(single_character + " found at index 2")
+    print(str(single_character) + " found at index 2")
     matching_characters = matching_characters + 1
 if five_letter_word[3] == single_character:
-    print(single_character + " found at index 3")
+    print(str(single_character) + " found at index 3")
     matching_characters = matching_characters + 1
 if five_letter_word[4] == single_character:
-    print(single_character + " found at index 4")
+    print(str(single_character) + " found at index 4")
     matching_characters = matching_characters + 1
 
 if matching_characters == 0:
-    print("No instances of " + single_character + " found in " + five_letter_word)
+    print("No instances of " + str(single_character) + " found in " + str(five_letter_word))
 if matching_characters == 1:
-    print("1 instance of " + single_character + " found in " + five_letter_word)
+    print("1 instance of " + str(single_character) + " found in " + str(five_letter_word))
 if matching_characters > 1:
-    print(str(matching_characters) + " instances of " + single_character + " found in " + five_letter_word)
+    print(str(matching_characters) + " instances of " + str(single_character) + " found in " + str(five_letter_word))
