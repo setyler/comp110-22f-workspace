@@ -12,7 +12,7 @@ if len(single_character) != 1:
     exit()
 print("Searching for " + single_character + " in " + five_letter_word)
 
-matching_characters: str = 0
+matching_characters: int = 0
 
 if five_letter_word[0] == single_character:
     print(single_character + " found at index 0")
