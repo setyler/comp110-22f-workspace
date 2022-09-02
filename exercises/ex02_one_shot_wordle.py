@@ -17,8 +17,18 @@ result_of_guess: str = ""
 while index_of_guess < len(secret_word):
     if secret_word[index_of_guess] == user_guess[index_of_guess]:
         result_of_guess = f"{result_of_guess}{GREEN_BOX}" 
-    else: 
-        result_of_guess = f"{result_of_guess}{WHITE_BOX}"
+    elif secret_word[index_of_guess] != user_guess[index_of_guess]:
+        character_exists = False
+        alternate_index: int = 0
+        while character_exists == False and alternate_index < len(secret_word):
+            if secret_word[alternate_index] == user_guess[index_of_guess]:
+                character_exists = True
+            else: 
+                alternate_index += 1 
+        if character_exists == True:
+            result_of_guess = f"{result_of_guess}{YELLOW_BOX}"
+        else:
+            result_of_guess = f"{result_of_guess}{WHITE_BOX}"
     index_of_guess = index_of_guess + 1 
 print(result_of_guess)
 
