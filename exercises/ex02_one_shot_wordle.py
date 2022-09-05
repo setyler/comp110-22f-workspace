@@ -1,9 +1,9 @@
-"""Exercise 2: One Shot Wordle"""
+"""Exercise 2: One Shot Wordle."""
 __author__ = "730946915"
 
 secret_word: str = "python"
 # can be changed to any word 
-user_guess: str = input("What is your " + str(len(secret_word)) + "-letter guess?")
+user_guess: str = input(f"What is your {str(len(secret_word))} -letter guess?")
 
 WHITE_BOX: str = "\U00002B1C" 
 GREEN_BOX: str = "\U0001F7E9"
@@ -11,7 +11,7 @@ YELLOW_BOX: str = "\U0001F7E8"
 # emojis!!
 
 while len(str(user_guess)) != len(str(secret_word)):
-    user_guess = input("That was not " + str(len(secret_word)) + " letters! Try again.")
+    user_guess = input(f"That was not {str(len(secret_word))} letters! Try again.")
 # accounting for guesses that don't work with the program 
 
 index_of_guess: int = 0
@@ -23,7 +23,7 @@ while index_of_guess < len(str(secret_word)):
     else:  # somewhat more consice with else as opposed to elif 
         character_exists = False 
         alternate_index: int = 0  # setting up test condition (lines 24 & 25)
-        while character_exists == False and alternate_index <= len(secret_word): # testing the test conditions to start the loop 
+        while character_exists == False and alternate_index <= len(secret_word):  # testing the test conditions to start the loop 
             if secret_word[alternate_index] == user_guess[index_of_guess]: 
                 character_exists = True  # will produce a yellow box after the loop completes. only one (the first) case of a character existing will be found and used to change the output to a yellow box 
             else: 
