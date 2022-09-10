@@ -63,7 +63,8 @@ def main() -> None:
         print(emojified(user_guess, secret_word))
         if user_guess == secret_word:
             game_won = True 
-        i_game += 1 
+        else:
+            i_game += 1 
     if game_won:
         print(f"You won in {i_game}/6 turns!")
         # final value of i_game is total number of games played 
@@ -78,9 +79,5 @@ if __name__ == "__main__":
 
 
 # current autograder isdues:
-# game not winnable with secret "codes"
-# game not winnable after multiple guesses
-# game not lost after 6 guesses 
-
-# issue not ending main() at the right time? 
-# print game results after game is over 
+# --game not winnable with secret "codes"
+# --game not winnable after multiple guesses
