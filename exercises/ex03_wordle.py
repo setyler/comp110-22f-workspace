@@ -53,11 +53,11 @@ def main() -> None:
     secret_word: str = "codes"
     # can be changed to any word of any length 
     user_guess: str = ""
-    i_game: int = 0
+    i_game: int = 1
     # starting at 1 so the first game index isn't equal to 0 
-    game_won: bool = False 
+    game_won: bool = False
     # i originally though i also needed to define a variable for secret length here but that is all taken care of in the input_guess function 
-    while i_game < 6 and not game_won:
+    while i_game < 7 and not game_won:
         print(f"=== Turn {i_game}/6 ===")
         user_guess = input_guess(len(secret_word))
         print(emojified(user_guess, secret_word))
@@ -75,3 +75,12 @@ if __name__ == "__main__":
     main()
 # extra code that we do not yet understand 
 # but are grateful for because it makes playing the game easier 
+
+
+# current autograder isdues:
+# game not winnable with secret "codes"
+# game not winnable after multiple guesses
+# game not lost after 6 guesses 
+
+# issue not ending main() at the right time? 
+# print game results after game is over 
