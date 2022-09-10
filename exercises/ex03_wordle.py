@@ -1,6 +1,7 @@
 """Wordle!"""
 __author__ = "730496915"
 
+
 def contains_char(string: str, character: str) -> bool:
     """Searches secret word for character and reuturns boolean."""
     assert len(character) == 1 
@@ -12,8 +13,9 @@ def contains_char(string: str, character: str) -> bool:
         i_1 += 1 
     return False 
 
+
 def emojified(guess: str, secret_word: str) -> str:
-    "Compares secret word to user guess and returns emoji boxes."
+    """Compares secret word to user guess and returns emoji boxes."""
     assert len(guess) == len(secret_word)
     i_2 = 0 
     result: str = ""
@@ -36,6 +38,7 @@ def emojified(guess: str, secret_word: str) -> str:
         i_2 += 1 
     return result
 
+
 def input_guess(expected_length: int) -> str:
     """Handles getting a valid guess from user."""
     user_guess: str = input(f"Enter a {expected_length} character word:")
@@ -43,6 +46,7 @@ def input_guess(expected_length: int) -> str:
         user_guess = input(f"That wasn't {expected_length} chars! Try again:")
     return user_guess 
     # this function is solely used to account for user error 
+
 
 def main() -> None:
     """The entrypoint of the program and the main game loop."""
@@ -53,18 +57,19 @@ def main() -> None:
     # starting at 1 so the first game index isn't equal to 0 
     game_won: bool = False 
     # i originally though i also needed to define a variable for secret length here but that is all taken care of in the input_guess function 
-    while i_game < 6 and game_won == False:
+    while i_game < 6 and not game_won:
         print(f"=== Turn {i_game}/6 ===")
         user_guess = input_guess(len(secret_word))
         print(emojified(user_guess, secret_word))
         if user_guess == secret_word:
             game_won = True 
         i_game += 1 
-    if game_won == True:
+    if game_won:
         print(f"You won in {i_game}/6 turns!")
         # final value of i_game is total number of games played 
     else:
-        print(f"X/6 - Sorry, try again tomorrow!")
+        print("X/6 - Sorry, try again tomorrow!")
+
 
 if __name__ == "__main__":
     main()
