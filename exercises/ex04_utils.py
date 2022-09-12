@@ -8,7 +8,7 @@ def all(input_list: list[int], input_int: int) -> bool:
     result = False
     if len(input_list) == 0:
         return result
-    while i < len(input_list) or result == False:
+    while i < len(input_list) or not result:
         if input_list[i] == input_int:
             result = True 
             i += 1
@@ -19,17 +19,18 @@ def all(input_list: list[int], input_int: int) -> bool:
 
 
 def max(input: list[int]) -> int:
-    """Given a list if integers, returns the largest."""
+    """Given a list of integers, returns the largest."""
     i: int = 0
+    result: int = 0
     if len(input) == 0: 
         raise ValueError("max() is an empty List")
-    result: int = list[i]
     if len(input) == 1:
         result = input[0]
-        return result 
+        return result
     else:
+        result = input[0]
         while i < len(input):
-            if input[i] > result:  
+            if input[i] > result:
                 result = input[i]
             i += 1 
     return result 
