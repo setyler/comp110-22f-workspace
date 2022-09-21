@@ -11,6 +11,7 @@ def only_evens(list_of_ints: list[int]) -> list[int]:
             output_list.append(int(list_of_ints[i-1]))
         i += 1
     return output_list 
+# wrong order: only_evens([1, 2, 3, 6]) returns [6, 2]
 
 
 def concat(list_1: list[int], list_2: list[int]) -> list[int]:
@@ -19,7 +20,7 @@ def concat(list_1: list[int], list_2: list[int]) -> list[int]:
     i: int = 0 
     while i < len(list_1):
         output_list.append(int(list_1[i]))
-    i = 0
+    i += 0
     while i < len(list_2):
         output_list.append(int(list_2[i]))
     return output_list
@@ -49,5 +50,3 @@ def sub(list: list[int], start_index: int, end_index: int) -> list[int]:
             i += 1
         if i > end_index:
             return output_list
-
-# create new list and add to it

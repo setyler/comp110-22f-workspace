@@ -82,5 +82,3 @@ def test_sub_random_case() -> None:
     start_index: int = 2
     end_index: int = 5
     assert sub(list, start_index, end_index) == [2, 16, 0, 94]
-
-
