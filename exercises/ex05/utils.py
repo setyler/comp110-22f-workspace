@@ -17,9 +17,13 @@ def concat(list_1: list[int], list_2: list[int]) -> list[int]:
     """Given two lists, adds them together. Output list consists of all of list one and then all of list two, in the input order."""
     output_list: list[int] = []
     i: int = 0 
+    if len(list_1) == 0:
+        return list_2
+    if len(list_2) == 0:
+        return list_1
     while i < len(list_1):
         output_list.append(int(list_1[i]))
-        i += 0
+        i += 1
     i = 0
     while i < len(list_2):
         output_list.append(int(list_2[i]))
