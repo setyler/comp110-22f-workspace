@@ -18,14 +18,14 @@ def concat(list_1: list[int], list_2: list[int]) -> list[int]:
     output_list: list[int] = []
     i: int = 0 
     while i < len(list_1):
-        output_list.append(list_1[i])
+        output_list.append(int(list_1[i]))
         i += 0
     i = 0
     while i < len(list_2):
-        output_list.append(list_2[i])
+        output_list.append(int(list_2[i]))
         i += 1
     return output_list
-
+# this funciton is just a hot mess according to the autograder 
 
 def sub(list: list[int], start_index: int, end_index: int) -> list[int]:
     """Given a list and two indexes, produces a list of only the values between the specified ideces."""
@@ -39,7 +39,7 @@ def sub(list: list[int], start_index: int, end_index: int) -> list[int]:
         end_index = len(list) - 1
     while i < start_index:
         i += 1
-    while i < end_index:
-        output_list.append(list[i])
+    while i <= end_index:
+        output_list.append(int(list[i]))
         i += 1
     return output_list
