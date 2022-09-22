@@ -8,7 +8,7 @@ def only_evens(list_of_ints: list[int]) -> list[int]:
     i: int = 0
     while len(list_of_ints) > 0 and i < len(list_of_ints):
         if list_of_ints[i - 1] % 2 == 0:
-            output_list.append(int(list_of_ints[i-1]))
+            output_list.append(int(list_of_ints[i - 1]))
         i += 1
     return output_list 
 # wrong order: only_evens([1, 2, 3, 6]) returns [6, 2]
