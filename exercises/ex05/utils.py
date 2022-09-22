@@ -7,11 +7,10 @@ def only_evens(list_of_ints: list[int]) -> list[int]:
     output_list: list[int] = []
     i: int = 0
     while len(list_of_ints) > 0 and i < len(list_of_ints):
-        if list_of_ints[i - 1] % 2 == 0:
-            output_list.append(int(list_of_ints[i - 1]))
+        if list_of_ints[i] % 2 == 0:
+            output_list.append(int(list_of_ints[i]))
         i += 1
     return output_list 
-# wrong order: only_evens([1, 2, 3, 6]) returns [6, 2]
 
 
 def concat(list_1: list[int], list_2: list[int]) -> list[int]:
@@ -19,34 +18,28 @@ def concat(list_1: list[int], list_2: list[int]) -> list[int]:
     output_list: list[int] = []
     i: int = 0 
     while i < len(list_1):
-        output_list.append(int(list_1[i]))
-    i += 0
+        output_list.append(list_1[i])
+        i += 0
+    i = 0
     while i < len(list_2):
-        output_list.append(int(list_2[i]))
+        output_list.append(list_2[i])
+        i += 1
     return output_list
 
 
 def sub(list: list[int], start_index: int, end_index: int) -> list[int]:
     """Given a list and two indexes, produces a list of only the values between the specified ideces."""
-    assert end_index >= start_index
-    i: int = 0
     output_list: list[int] = []
+    if end_index <= start_index:
+        return output_list
+    i: int = 0
     if start_index < 0:
         start_index = 0 
-    if end_index > len(list) - 1:
+    if end_index >= len(list):
         end_index = len(list) - 1
-    while i < len(list):
+    while i < start_index:
         i += 1
-        if i < start_index:
-            i += 1
-        if i == start_index:
-            output_list.append(list[i])
-            i += 1
-        if i > start_index and i < end_index: 
-            output_list.append(list[i])
-            i += 1
-        if i == end_index:
-            output_list.append(list[i])
-            i += 1
-        if i > end_index:
-            return output_list
+    while i < end_index:
+        output_list.append(list[i])
+        i += 1
+    return output_list
