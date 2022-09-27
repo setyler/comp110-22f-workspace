@@ -29,15 +29,17 @@ def concat(list_1: list[int], list_2: list[int]) -> list[int]:
 
 
 def sub(list: list[int], start: int, end: int) -> list[int]:
-    output_list: list[int] = list()
-    i = 0 
+    output_list: list[int] = []
+    i: int = 0 
+    if end <= start:
+        return output_list 
     if start < 0:
         start = 0
     if end >= int(len(list)):
-        end = int(len(list))
+        end = int(len(list)) - 1
     while i < start:
         i = start
     while i < end:
-        output_list.append(list[i])
+        output_list.append(int(list[i]))
         i += 1 
     return output_list
