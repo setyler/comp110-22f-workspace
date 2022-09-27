@@ -41,6 +41,6 @@ def sub(list_1: list[int], start: int, end: int) -> list[int]:
     while i < start:
         i = start
     while i < end:
-        output_list.append(int(list[i]))  # 'output.list' must be list of ints 
+        output_list.append(int(list_1[i]))  # 'output.list' must be list of ints 
         i += 1 
     return output_list
