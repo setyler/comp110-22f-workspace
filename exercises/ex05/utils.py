@@ -29,13 +29,14 @@ def concat(list_1: list[int], list_2: list[int]) -> list[int]:
 
 
 def sub(list: list[int], start: int, end: int) -> list[int]:
+    """Given a list and start and end indices, outputs subset list."""
     output_list: list[int] = []
     i: int = 0 
     if end <= start:
         return output_list 
     if start < 0:
         start = 0
-    if end >= int(len(list)):
+    if end > int(len(list)):
         end = int(len(list)) - 1
     while i < start:
         i = start
