@@ -36,8 +36,8 @@ def sub(list: list[int], start: int, end: int) -> list[int]:
         return output_list 
     if start < 0:
         start = 0
-    if end > int(len(list)):
-        end = int(len(list)) - 1
+    if end >= int(len(list)):
+        end = int(len(list))
     while i < start:
         i = start
     while i < end:
