@@ -5,6 +5,7 @@ __author__ = "730496915"
 points: int = 0
 player: str = ""
 THEE_NUMBER: int = 0 
+user: str = ""
 
 
 def main() -> None:
@@ -13,18 +14,18 @@ def main() -> None:
     enter_game: int = 1
     while enter_game == 1:
         game_loop()
-        enter_game = int(input(f"To play again, enter 1. To exit the game, enter 0."))
+        enter_game = int(input("To play again, enter 1. To exit the game, enter 0."))
     game_over()
 
 
 def greet() -> None:
     """Retrieves username and explains rules."""
     global player 
-    user = input(f"Enter your name to get started:")
+    player = input(f"Enter your name to get started:")
     print(f"Welcome to the Number Game, {player}!")
-    print(f"Game rules are simple. You are trying to guess a secret number between 1 and 100.")
-    print(f"Game points track how many times you have guessed.")
-    print(f"You can play an umlimited number of times. Good luck!")
+    print("Game rules are simple. You are trying to guess a secret number between 1 and 100.")
+    print("Game points track how many times you have guessed.")
+    print("You can play an umlimited number of times. Good luck!")
 
 
 def game_loop() -> None: 
