@@ -34,7 +34,7 @@ def game_loop() -> None:
     from random import randint
     THEE_NUMBER = randint(1, 100)
     guess: int = 0
-    game: bool = False
+    game: bool = True
     guess = int(input("I'm thinking of a number between 1 and 100. Enter your first guess."))
     while game:
         if test_guess(guess, THEE_NUMBER):
