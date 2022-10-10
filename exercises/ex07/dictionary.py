@@ -2,9 +2,6 @@
 __author__ = "730496915"
 
 
-# python -m tools.submission exercises/ex07
-
-
 def invert(input_dict: dict[str, str]) -> dict[str, str]:
     """Given a dictionary, swaps the key and value and returns a new dictionary."""
     output_dict: dict[str, str] = {}
@@ -32,7 +29,6 @@ def favorite_color(input_dict: dict[str, str]) -> str:
             output_str = key 
             highest = values[key]
     return output_str 
-# outputs first color instead of most frequent 
 
 
 def count(input_list: list[str]) -> dict[str, int]:
