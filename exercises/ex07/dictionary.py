@@ -11,27 +11,24 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
     for key in input_dict:
         if input_dict[key] in output_dict:
             raise KeyError("Your input dictionary contains multiple equal values.")
-        output_dict[input_dict[key]] = input_dict  # something in here is off 
+        else:
+            output_dict[input_dict[key]] = key 
     return output_dict 
-# this functions is simply incorrect 
 
 
 def favorite_color(input_dict: dict[str, str]) -> str:
     """Given input dictionary of favorite colors, gives the color that appears most."""
-    tested: list[str] = []
-    values: dict[str, str] = {}
+    values: dict[str, int] = {}
     output_str: str = ""
-    highest: int = 0
+    highest: int = 0 
+    if len(input_dict) == 0:
+        return output_str
     for key in input_dict:
-        i: int = 0
-        if input_dict[key] not in tested:
-            while i < len(input_dict):
-                if input_dict[key] == input_dict[i]:
-                    values[input_dict[key]] += 1 
-            tested.append[input_dict[key]]
+        values[key] += 1 
     for key in values:
         if values[key] > highest:
-            output_str = key
+            highest = values[key]
+            output_str = f"{key}"
     return output_str
 
 
@@ -41,3 +38,4 @@ def count(input_list: list[str]) -> dict[str, int]:
     for item in input_list:
         output_dict[item] += 1 
     return output_dict 
+# and lastly, this function is also simply incorrect :( 

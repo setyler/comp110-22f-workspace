@@ -52,6 +52,7 @@ def test_favorite_color_random() -> None:
     input_dict: dict[str, str] = {"Kate": "blue", "Liam": "red", "Sue": "lavendar", "Roxanne": "red"}
     assert favorite_color(input_dict) == "red"
 
+
 def test_count_empty() -> None:
     """Test 1 for count."""
     input_list: list[str] = ()
