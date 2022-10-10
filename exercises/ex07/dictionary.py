@@ -10,7 +10,7 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
     output_dict: dict[str, str] = {}
     for key in input_dict:
         if input_dict[key] in output_dict:
-            raise KeyError("Your input dictionary contains multiple equal values. Please try again.")
+            raise KeyError("Your input dictionary contains multiple equal values.")
         output_dict[input_dict[key]] = input_dict  # something in here is off 
     return output_dict 
 
@@ -36,7 +36,7 @@ def favorite_colors(input_dict: dict[str, str]) -> str:
 
 def count(input_list: list[str]) -> dict[str, int]:
     """Returns dictionary that counts the number of items in the list."""
-    output_dict: dict[str, str] = {}
+    output_dict: dict[str, int] = {}
     for item in input_list:
         output_dict[item] += 1 
     return output_dict 
