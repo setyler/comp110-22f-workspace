@@ -38,4 +38,3 @@ def count(input_list: list[str]) -> dict[str, int]:
     for item in input_list:
         output_dict[item] += 1 
     return output_dict 
-# and lastly, this function is also simply incorrect :( 
