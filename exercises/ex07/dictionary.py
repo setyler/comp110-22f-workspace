@@ -17,14 +17,14 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
 
 
 def favorite_color(input_dict: dict[str, str]) -> str:
-    """Given input dictionary of favorite colors, gives the color that appears most."""
+    """Given input dictionary of favorite colors, returns the color that appears most."""
     values: dict[str, int] = {}
     output_str: str = ""
     highest: int = 0 
     if len(input_dict) == 0:
         return output_str
     for key in input_dict:
-        if key not in values:
+        if input_dict[key] not in values:
             values[input_dict[key]] = 0
         values[input_dict[key]] += 1 
     for key in values: 
@@ -32,11 +32,14 @@ def favorite_color(input_dict: dict[str, str]) -> str:
             output_str = key 
             highest = values[key]
     return output_str 
+# outputs first color instead of most frequent 
 
 
 def count(input_list: list[str]) -> dict[str, int]:
     """Returns dictionary that counts the number of items in the list."""
     output_dict: dict[str, int] = {}
+    if len(input_list) == 0:
+        return output_dict 
     for item in input_list:
         if item not in output_dict:
             output_dict[item] = 0 

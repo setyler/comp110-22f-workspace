@@ -56,7 +56,7 @@ def test_favorite_color_random() -> None:
 def test_count_empty() -> None:
     """Test 1 for count."""
     input_list: list[str] = ()
-    assert count(input_list) == ""
+    assert count(input_list) == {}
 
 
 def test_count_all_one() -> None:
