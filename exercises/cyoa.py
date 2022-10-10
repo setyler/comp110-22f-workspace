@@ -21,7 +21,7 @@ def main() -> None:
 def greet() -> None:
     """Retrieves username and explains rules."""
     global player 
-    player = input(f"Enter your name to get started:")
+    player = input("Enter your name to get started:")
     print(f"Welcome to the Number Game, {player}!")
     print("Game rules are simple. You are trying to guess a secret number between 1 and 100.")
     print("Game points track how many times you have guessed.")

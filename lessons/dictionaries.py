@@ -33,4 +33,3 @@ schools["NCSU"] += 200
 for key in schools:
     print(f"Key: {key} -> Value: {schools[key]}")
 
-print(type(schools[school]))
