@@ -28,7 +28,7 @@ def favorite_color(input_dict: dict[str, str]) -> str:
     for key in values:
         if values[key] > highest:
             highest = values[key]
-            output_str = f"{key}"
+            output_str = str(key)
     return output_str
 
 
