@@ -24,6 +24,8 @@ def favorite_color(input_dict: dict[str, str]) -> str:
     if len(input_dict) == 0:
         return output_str
     for key in input_dict:
+        if key not in values:
+            values[key] = 0
         values[key] += 1 
     for key in values:
         if values[key] > highest:
@@ -36,5 +38,8 @@ def count(input_list: list[str]) -> dict[str, int]:
     """Returns dictionary that counts the number of items in the list."""
     output_dict: dict[str, int] = {}
     for item in input_list:
+        if item not in output_dict:
+            output_dict[item] = 0 
         output_dict[item] += 1 
     return output_dict 
+# also: type safety / static type annotations 
