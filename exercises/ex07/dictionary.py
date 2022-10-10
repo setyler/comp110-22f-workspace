@@ -13,9 +13,10 @@ def invert(input_dict: dict[str, str]) -> dict[str, str]:
             raise KeyError("Your input dictionary contains multiple equal values.")
         output_dict[input_dict[key]] = input_dict  # something in here is off 
     return output_dict 
+# this functions is simply incorrect 
 
 
-def favorite_colors(input_dict: dict[str, str]) -> str:
+def favorite_color(input_dict: dict[str, str]) -> str:
     """Given input dictionary of favorite colors, gives the color that appears most."""
     tested: list[str] = []
     values: dict[str, str] = {}

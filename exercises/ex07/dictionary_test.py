@@ -6,7 +6,7 @@ __author__ = "730496915"
 
 
 from dictionary import invert
-from dictionary import favorite_colors 
+from dictionary import favorite_color 
 from dictionary import count
 import pytest
 
@@ -38,19 +38,19 @@ with pytest.raises(KeyError):
 def test_favorite_color_empty() -> None:
     """Test 1 for favorite colors."""
     input_dict: dict[str, str] = {}
-    assert favorite_colors(input_dict) == ""
+    assert favorite_color(input_dict) == ""
 
 
 def test_favorite_color_all_one() -> None:
     """Test 2 for favorite colors."""
     input_dict: dict[str, str] = {"Kate": "red", "Liam": "red", "Sue": "red", "Roxanne": "red"}
-    assert favorite_colors(input_dict) == "red"
+    assert favorite_color(input_dict) == "red"
 
 
 def test_favorite_color_random() -> None:
     """Test 3 for favorite colors."""
     input_dict: dict[str, str] = {"Kate": "blue", "Liam": "red", "Sue": "lavendar", "Roxanne": "red"}
-    assert favorite_colors(input_dict) == "red"
+    assert favorite_color(input_dict) == "red"
 
 def test_count_empty() -> None:
     """Test 1 for count."""
