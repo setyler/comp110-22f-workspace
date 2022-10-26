@@ -38,6 +38,8 @@ def columnar(input: list[dict[str, str]]) -> dict[str, list[str]]:
 def head(input_columns: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     """Returns column oriented data with only the specified number of columns."""
     output_data: dict[str, list[str]] = {}
+    if n > len(input_columns):
+        n = len(input_columns)
     for key in input_columns:  # loops through the name of each column
         column_values: list[str] = []  # list for first N values
         i: int = 0 
