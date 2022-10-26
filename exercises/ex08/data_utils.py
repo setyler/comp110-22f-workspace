@@ -4,7 +4,6 @@ __author__ = "730496915"
 
 
 from csv import DictReader
-from io import TextIOWrapper
 
 
 def read_csv_rows(filename: str) -> list[dict[str, str]]:
@@ -42,11 +41,13 @@ def head(input_columns: dict[str, list[str]], n: int) -> dict[str, list[str]]:
     for key in input_columns:  # loops through the name of each column
         column_values: list[str] = []  # list for first N values
         i: int = 0 
-        while i < n:
+        while i < n: 
+            if i not in input_columns[key]:
+                i = n 
             column_values.append(input_columns[key][i])
             i += 1 
         output_data[key] = column_values 
-    return output_data
+    return output_data 
 
 
 def select(input_columns: dict[str, list[str]], new_columns: list[str]) -> dict[str, list[str]]:
