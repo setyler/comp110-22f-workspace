@@ -60,9 +60,16 @@ def select(input_columns: dict[str, list[str]], new_columns: list[str]) -> dict[
 def concat(dict_1: dict[str, list[str]], dict_2: dict[str, list[str]]) -> dict[str, list[str]]:
     """Combines two column oriented data sets."""
     output_dict: dict[str, list[str]] = {}
+    for value in dict_1:
+        output_dict[value] = dict_1[value]
+    for value in dict_2:
+        if value in output_dict:
+            output_dict[value] += [dict_2[value]]
+        else:
+            output_dict[value] = dict_2[value]
+    return output_dict 
 
 
-# may be of use later according to the group me <3 
 def count(input_list: list[str]) -> dict[str, int]:
     """Returns dictionary that counts the number of items in the list."""
     output_dict: dict[str, int] = {}
