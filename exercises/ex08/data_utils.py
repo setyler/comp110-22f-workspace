@@ -42,8 +42,6 @@ def head(input_columns: dict[str, list[str]], n: int) -> dict[str, list[str]]:
         column_values: list[str] = []  # list for first N values
         i: int = 0 
         while i < n: 
-            if i not in input_columns[key]:
-                i = n 
             column_values.append(input_columns[key][i])
             i += 1 
         output_data[key] = column_values 
@@ -65,7 +63,7 @@ def concat(dict_1: dict[str, list[str]], dict_2: dict[str, list[str]]) -> dict[s
         output_dict[value] = dict_1[value]
     for value in dict_2:
         if value in output_dict:
-            output_dict[value] += [dict_2[value]]
+            output_dict[value] += dict_2[value]
         else:
             output_dict[value] = dict_2[value]
     return output_dict 
