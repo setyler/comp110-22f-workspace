@@ -102,13 +102,14 @@ class Model:
     population: list[Cell]
     time: int = 0
     number_infected: int
-    number_immune: int 
+    number_immune: int = 0 
 
+    # TODO: 'does not take in correct arguments/something up with number_immune) 
     def __init__(self, cells: int, speed: float, starting_infected: int, number_immune: int):
         """Initialize the cells with random locations and directions."""
         self.population = []
         self.number_infected = starting_infected
-        self.number_immune = number_immune  
+        self.number_immune = number_immune 
 
         if starting_infected > cells:
             raise ValueError("Too many infected cells.")
@@ -170,7 +171,7 @@ class Model:
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
-        output: bool = False
+        output: bool = True
         for cell in self.population:
             if cell.is_infected():
                 output = False
