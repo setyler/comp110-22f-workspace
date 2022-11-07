@@ -108,13 +108,17 @@ class Model:
         """Initialize the cells with random locations and directions."""
         self.population = []
         self.number_infected = starting_infected
-        self.number_immune = number_immune 
-        if self.number_infected >= self.population or self.number_infected <= 0:
-            raise ValueError(f"Number of infected cells must be less than {constants.CELL_COUNT} and greater than zero.")
-        if self.number_immune >= self.population or self.number_immune < 0: 
-            raise ValueError(f"Number of immune cells must be less than {constants.CELL_COUNT}.")
-        if self.number_immune + self.number_infected > constants.CELL_COUNT:
-            raise ValueError(f"Number of infected cells plus immune cells must be less than {constants.CELL_COUNT}.")
+        self.number_immune = number_immune  
+
+        if self.number_infected > cells:
+            raise ValueError("Too many infected cells.")
+        if self.number_infected <= 0:
+            raise ValueError("Too few infected cells.")
+        if self.number_immune > cells:
+            raise ValueError("Too many immune cells.")
+        if self.number_immune + self.number_infected > cells:
+            raise ValueError("Too many immune and infected cells.")
+
         for _ in range(cells): 
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
