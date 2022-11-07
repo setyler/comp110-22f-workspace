@@ -56,7 +56,7 @@ class Cell:
             return "deep sky blue"
         elif self.is_vulnerable():
             return "gray"        
-        else:
+        elif self.is_immune():
             return "red"
     
     def contract_disease(self):
@@ -109,18 +109,18 @@ class Model:
         self.population = []
         self.number_infected = starting_infected
         self.number_immune = number_immune 
-        if self.number_infected >= constants.CELL_COUNT or self.number_infected <= 0:
+        if self.number_infected >= self.population or self.number_infected <= 0:
             raise ValueError(f"Number of infected cells must be less than {constants.CELL_COUNT} and greater than zero.")
-        if self.number_immune >= constants.CELL_COUNT or self.number_immune < 0: 
+        if self.number_immune >= self.population or self.number_immune < 0: 
             raise ValueError(f"Number of immune cells must be less than {constants.CELL_COUNT}.")
         if self.number_immune + self.number_infected > constants.CELL_COUNT:
             raise ValueError(f"Number of infected cells plus immune cells must be less than {constants.CELL_COUNT}.")
         for _ in range(cells): 
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
-            if len(self.population) < self.number_infected:
+            if len(self.population) <= self.number_infected:
                 sickness = constants.INFECTED
-            elif len(self.population) < self.number_immune + self.number_infected:
+            elif len(self.population) <= self.number_immune + self.number_infected:
                 sickness = constants.IMMUNE
             cell: Cell = Cell(start_location, start_direction)
             self.population.append(cell)
@@ -167,7 +167,7 @@ class Model:
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
         for cell in self.population:
-            if cell.is_vulnerable() or cell.is_immune():
-                return True
+            if not cell.is_vulnerable() or not cell.is_immune():
+                return False
         else:
-            return False
+            return True 
