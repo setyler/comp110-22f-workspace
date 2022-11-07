@@ -35,12 +35,13 @@ class Cell:
     """An individual subject in the simulation."""
     location: Point
     direction: Point
-    sickness: int = constants.VULNERABLE
+    sickness: int 
 
-    def __init__(self, location: Point, direction: Point):
+    def __init__(self, location: Point, direction: Point, sickness: int):
         """Construct a cell with its location and direction."""
         self.location = location
         self.direction = direction
+        self.sickness = sickness 
 
     def tick(self) -> None: 
         """Updates object position and status."""
@@ -102,31 +103,32 @@ class Model:
     population: list[Cell]
     time: int = 0
     number_infected: int
-    number_immune: int = 0 
+    number_immune: int 
 
-    def __init__(self, cells: int, speed: float, starting_infected: int, number_immune: int = 0):
+    def __init__(self, cells: int, speed: float, starting_infected: int, number_immune: int):
         """Initialize the cells with random locations and directions."""
         self.population = []
         self.number_infected = starting_infected
         self.number_immune = number_immune  
 
-        if self.number_infected > cells:
+        if starting_infected > cells:
             raise ValueError("Too many infected cells.")
-        if self.number_infected <= 0:
+        if starting_infected <= 0:
             raise ValueError("Too few infected cells.")
-        if self.number_immune > cells:
+        if number_immune > cells:
             raise ValueError("Too many immune cells.")
-        if self.number_immune + self.number_infected > cells:
+        if number_immune + starting_infected > cells:
             raise ValueError("Too many immune and infected cells.")
 
         for _ in range(cells): 
             start_location: Point = self.random_location()
-            start_direction: Point = self.random_direction(speed)
-            if len(self.population) <= self.number_infected:
+            start_direction: Point = self.random_direction(speed) 
+            sickness: int = 0 
+            if len(self.population) < starting_infected:
                 sickness = constants.INFECTED
-            elif len(self.population) <= self.number_immune + self.number_infected:
+            elif len(self.population) < starting_infected + number_immune:
                 sickness = constants.IMMUNE
-            cell: Cell = Cell(start_location, start_direction)
+            cell: Cell = Cell(start_location, start_direction, sickness)
             self.population.append(cell)
     
     def tick(self) -> None:
