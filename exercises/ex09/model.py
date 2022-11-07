@@ -35,13 +35,12 @@ class Cell:
     """An individual subject in the simulation."""
     location: Point
     direction: Point
-    sickness: int
+    sickness: int = constants.VULNERABLE
 
-    def __init__(self, location: Point, direction: Point, sickness: int):
+    def __init__(self, location: Point, direction: Point):
         """Construct a cell with its location and direction."""
         self.location = location
         self.direction = direction
-        self.sickness = sickness
 
     def tick(self) -> None: 
         """Updates object position and status."""
@@ -119,12 +118,11 @@ class Model:
         for _ in range(cells): 
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
-            sickness: int = constants.VULNERABLE  
             if len(self.population) < self.number_infected:
                 sickness = constants.INFECTED
             elif len(self.population) < self.number_immune + self.number_infected:
-                sickness = constants 
-            cell: Cell = Cell(start_location, start_direction, sickness)
+                sickness = constants.IMMUNE
+            cell: Cell = Cell(start_location, start_direction)
             self.population.append(cell)
     
     def tick(self) -> None:
