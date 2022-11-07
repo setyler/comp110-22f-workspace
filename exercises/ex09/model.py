@@ -30,17 +30,18 @@ class Point:
         distance: float = sqrt((self.x - point_2.x) * (self.x - point_2.x) + (self.y - point_2.y) * (self.y - point_2.y))
         return distance
 
+
 class Cell:
     """An individual subject in the simulation."""
     location: Point
     direction: Point
-    sickness: int 
+    sickness: int
 
     def __init__(self, location: Point, direction: Point, sickness: int):
         """Construct a cell with its location and direction."""
         self.location = location
         self.direction = direction
-        self.sickness = sickness 
+        self.sickness = sickness
 
     def tick(self) -> None: 
         """Updates object position and status."""
@@ -72,7 +73,7 @@ class Cell:
 
     def is_infected(self) -> bool:
         """Tests cell status for infection."""
-        if self.sickness >= constants.INFECTED:  # self.sickness a module ??? 
+        if self.sickness >= constants.INFECTED: 
             return True 
         else:
             return False 
@@ -85,12 +86,14 @@ class Cell:
             return False 
     
     def contact_with(self, cell_1: Cell): 
+        """Process for when cells come into contact with each other."""
         if self.is_vulnerable() and cell_1.is_infected():
             self.contract_disease()
         if self.is_infected() and cell_1.is_vulnerable():
             cell_1.contract_disease()
     
     def immunize(self):
+        """Changes cell's sickness attribute to immune."""
         self.sickness = constants.IMMUNE 
 
     
