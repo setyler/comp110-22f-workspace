@@ -35,13 +35,12 @@ class Cell:
     """An individual subject in the simulation."""
     location: Point
     direction: Point
-    sickness: int 
+    sickness: int = constants.VULNERABLE
 
-    def __init__(self, location: Point, direction: Point, sickness: int):
+    def __init__(self, location: Point, direction: Point):
         """Construct a cell with its location and direction."""
         self.location = location
         self.direction = direction
-        self.sickness = sickness 
 
     def tick(self) -> None: 
         """Updates object position and status."""
@@ -123,12 +122,11 @@ class Model:
         for _ in range(cells): 
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed) 
-            sickness: int = 0 
-            if len(self.population) < starting_infected:
-                sickness = constants.INFECTED
-            elif len(self.population) < starting_infected + number_immune:
-                sickness = constants.IMMUNE
-            cell: Cell = Cell(start_location, start_direction, sickness)
+            cell: Cell = Cell(start_location, start_direction) 
+            if len(self.population) < self.number_infected:
+                cell.contract_disease()
+            elif len(self.population) < self.number_infected + self.number_immune:
+                cell.immunize()
             self.population.append(cell)
     
     def tick(self) -> None:
@@ -172,8 +170,9 @@ class Model:
 
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
+        output: bool = False
         for cell in self.population:
-            if not cell.is_vulnerable() or not cell.is_immune():
-                return False
+            if cell.is_infected():
+                output = False
         else:
-            return True 
+            return output 
