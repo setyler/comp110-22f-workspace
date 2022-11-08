@@ -102,22 +102,22 @@ class Model:
     population: list[Cell]
     time: int = 0
     number_infected: int
-    number_immune: int = 0 
+    number_immune: int = 0
 
     # TODO: 'does not take in correct arguments/something up with number_immune) 
-    def __init__(self, cells: int, speed: float, starting_infected: int, number_immune: int):
+    def __init__(self, cells: int, speed: float, starting_infected: int, number_immune: int = 0):
         """Initialize the cells with random locations and directions."""
         self.population = []
         self.number_infected = starting_infected
         self.number_immune = number_immune 
 
-        if starting_infected > cells:
+        if starting_infected >= cells:
             raise ValueError("Too many infected cells.")
         if starting_infected <= 0:
             raise ValueError("Too few infected cells.")
-        if number_immune > cells:
+        if number_immune >= cells:
             raise ValueError("Too many immune cells.")
-        if number_immune + starting_infected > cells:
+        if number_immune + starting_infected >= cells:
             raise ValueError("Too many immune and infected cells.")
 
         for _ in range(cells): 
