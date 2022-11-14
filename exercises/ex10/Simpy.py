@@ -8,6 +8,7 @@ __author__ = "730496915"
 
 
 class Simpy:
+    """Simpy class!"""
     values: list[float]
 
     def __init__(self, numbers: list[float] = []): 
@@ -18,7 +19,7 @@ class Simpy:
         """String representation of Simpy class."""
         return f"Simpy({self.values})"
 
-    def fill(self, filler: float, total: int):
+    def fill(self, filler: float, total: int) -> None:
         """Fills Simpy with given value."""
         self.values = []
         if total > len(self.values):
@@ -27,7 +28,7 @@ class Simpy:
                 self.values.append(filler)
                 i += 1 
 
-    def arange(self, start: float, stop: float, step: float = 1.0):
+    def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fills simpy with stepping range of values."""
         assert step != 0.0 
         self.values.append(start)
@@ -37,7 +38,6 @@ class Simpy:
         if start > stop:
             while self.values[len(self.values) - 1] > stop - step: 
                 self.values.append(self.values[len(self.values) - 1] + step) 
-
 
     def sum(self) -> float: 
         """Adds all values of self together."""
@@ -126,7 +126,7 @@ class Simpy:
             output.values = []
             i: int = 0 
             while i < len(self.values):
-                if rhs[i] == True:
+                if rhs[i]:
                     output.values.append(self[i])
                 i += 1 
             return output 
