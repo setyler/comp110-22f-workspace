@@ -45,6 +45,7 @@ def last(head: Optional[Node]) -> int:
 
 
 def value_at(head: Optional[Node], index: int) -> int:
+    """Returns value at specified index."""
     if index < 0 or head is None:
         raise IndexError("Index is out of bounds on the list.")
     if index == 0: 
@@ -57,8 +58,8 @@ def value_at(head: Optional[Node], index: int) -> int:
 def max(head: Optional[Node]) -> int:
     """Returns the max value in a linked list."""
     if head is None: 
-        raise ValueError("Cannot call max with None")
-    elif head.next is None: 
+        raise ValueError("Cannot call max with None") 
+    elif head.next is None:  # head being interpreted as int here ?? but this is fine in last fn 
         return head.data 
     else: 
         if head.data > max(head.data):
@@ -71,5 +72,17 @@ def linkify(items: list[int]) -> Optional[Node]:
         return None 
     else: 
         output: Node = Node(items[0], None)
-        items.pop[0]
+        items.pop(0)
         output.next = linkify(items)
+
+
+def scale(head: Optional[Node], factor: int) -> Optional[Node]:
+    """Returns a new linked list where the datas are the product of the original and the factor."""
+    if head is None: 
+        return None 
+    elif head.next is None: 
+        output: Node = Node(head.data * factor, None)
+        return output 
+    else: 
+        output: Node = Node(head.data * factor, scale(head.next))
+        return output 
