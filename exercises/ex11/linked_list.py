@@ -72,6 +72,8 @@ def linkify(items: list[int]) -> Optional[Node]:
     """Creates a linked list with given values."""
     if items is None:
         return None 
+    if len(items) == 0:
+        return None 
     elif len(items) == 1: 
         output: Node = Node(items[0], None)
         return output 
