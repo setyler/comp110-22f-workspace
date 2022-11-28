@@ -55,26 +55,32 @@ def value_at(head: Optional[Node], index: int) -> int:
         return value_at(head.next, index)
 
 
-def max(head: Optional[Node]) -> int:
-    """Returns the max value in a linked list."""
-    if head is None: 
-        raise ValueError("Cannot call max with None") 
+def max(head: Optional[Node]) -> int: 
+    """Returns highest value data in a linked list."""
+    if head is None:
+        raise ValueError("Cannot call max with None.")
     elif head.next is None: 
         return head.data 
-    else: 
-        if head.data > max(head.data):
+    else:
+        if head.data > max(head.next):
             return head.data 
+        else:
+            return max(head.next)   # I hate this bc it calls max twice but it works as opposed to the otehr thing I wrote 
 
 
-def linkify(items: list[int]) -> Optional[Node]:
-    """Returns linked list with values corresponding to input."""
-    if items == []:
+def linkify(items: list[int]) -> Optional[Node]: 
+    """Creates a linked list with given values."""
+    if items is None:
         return None 
-    else: 
+    elif len(items) == 1: 
+        output: Node = Node(items[0], None)
+        return output 
+    else:
         output: Node = Node(items[0], None)
         items.pop(0)
         output.next = linkify(items)
-
+        return output 
+    
 
 def scale(head: Optional[Node], factor: Optional[int]) -> Optional[Node]:
     """Returns a new linked list where the datas are the product of the original and the factor."""
@@ -86,8 +92,5 @@ def scale(head: Optional[Node], factor: Optional[int]) -> Optional[Node]:
         output: Node = Node(head.data * factor, None)
         return output 
     else: 
-        output: Node = Node(head.data * factor, scale(head.next))
+        output: Node = Node(head.data * factor, scale(head.next, factor))
         return output 
-
-
-# none of my recursive functions are working except the most basic ones :(

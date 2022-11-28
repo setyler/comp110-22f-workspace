@@ -1,7 +1,7 @@
 """Tests for linked list utils."""
 
 import pytest 
-from exercises.ex11.linked_list import Node, last, value_at, linkify, max, scale, __str__
+from exercises.ex11.linked_list import Node, last, value_at, linkify, max, scale
 
 __author__ = "730496915"
 
@@ -50,11 +50,12 @@ def test_linkify_empty() -> None:
 def test_linkify_non_empty() -> None:
     """Linkify test not edge."""
     assert linkify([1, 2, 3]) == Node(1, Node(2, Node(3, None)))
+# can't figure out how to represent the output of linkify. function works in repl.
 
 
 def test_scale_empty() -> None: 
     """Scale test for no input."""
-    assert scale(None) is None 
+    assert scale(None, None) is None
 
 
 def test_scale_non_empty() -> None: 
