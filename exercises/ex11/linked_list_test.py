@@ -1,7 +1,7 @@
 """Tests for linked list utils."""
 
 import pytest 
-from exercises.ex11.linked_list import Node, last, value_at, linkify, max, scale  
+from exercises.ex11.linked_list import Node, last, value_at, linkify, max, scale, __str__
 
 __author__ = "730496915"
 
@@ -19,7 +19,7 @@ def test_last_non_empty() -> None:
 
 
 def test_value_at_empty() -> None:
-    """Empty list raises index error"""
+    """Empty list raises index error."""
     with pytest.raises(IndexError):
         value_at(None, 2)
 
@@ -44,17 +44,17 @@ def test_max_non_empty() -> None:
 
 def test_linkify_empty() -> None:
     """Returns nothing."""
-    assert linkify(None) == None 
+    assert linkify(None) is None 
 
 
 def test_linkify_non_empty() -> None:
     """Linkify test not edge."""
-    assert linkify([1, 2, 3]) == "1 -> 2 -> 3 -> None"
+    assert linkify([1, 2, 3]) == Node(1, Node(2, Node(3, None)))
 
 
 def test_scale_empty() -> None: 
     """Scale test for no input."""
-    assert scale(None) == None 
+    assert scale(None) is None 
 
 
 def test_scale_non_empty() -> None: 

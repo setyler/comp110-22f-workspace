@@ -59,7 +59,7 @@ def max(head: Optional[Node]) -> int:
     """Returns the max value in a linked list."""
     if head is None: 
         raise ValueError("Cannot call max with None") 
-    elif head.next is None:  # head being interpreted as int here ?? but this is fine in last fn 
+    elif head.next is None: 
         return head.data 
     else: 
         if head.data > max(head.data):
@@ -76,13 +76,18 @@ def linkify(items: list[int]) -> Optional[Node]:
         output.next = linkify(items)
 
 
-def scale(head: Optional[Node], factor: int) -> Optional[Node]:
+def scale(head: Optional[Node], factor: Optional[int]) -> Optional[Node]:
     """Returns a new linked list where the datas are the product of the original and the factor."""
     if head is None: 
         return None 
+    if factor is None:
+        raise ValueError("Cannot call function without factor.")
     elif head.next is None: 
         output: Node = Node(head.data * factor, None)
         return output 
     else: 
         output: Node = Node(head.data * factor, scale(head.next))
         return output 
+
+
+# none of my recursive functions are working except the most basic ones :(
