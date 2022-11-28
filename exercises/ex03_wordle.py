@@ -50,7 +50,7 @@ def input_guess(expected_length: int) -> str:
 
 def main() -> None:
     """The entrypoint of the program and the main game loop."""
-    secret_word: str = "codes"
+    secret_word: str = "hot"
     # can be changed to any word of any length 
     user_guess: str = ""
     i_game: int = 1
